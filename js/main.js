@@ -147,7 +147,6 @@
     a.target = '_blank'; a.rel = 'noopener';
   });
   $('#callBtn').href = 'tel:' + S.phoneLink;
-  $('#barCall').href = 'tel:' + S.phoneLink;
   var dir = $('#dirBtn'); dir.href = S.directionsUrl; dir.target = '_blank'; dir.rel = 'noopener';
   var ig = S.social.filter(function (s) { return /instagram/i.test(s.label); })[0];
   $('#galBtn').href = ig ? ig.url : '#';
@@ -187,6 +186,31 @@
     b.addEventListener('click', function () { show(b.dataset.cat); });
     b.addEventListener('mouseenter', function () { if (window.matchMedia('(hover:hover)').matches) show(b.dataset.cat); });
   });
+
+  /* ---------- mobile menu ---------- */
+  (function () {
+    var btn = $('#menuBtn'), panel = $('#mnav'), closeBtn = $('#menuClose');
+    function setOpen(o) {
+      panel.classList.toggle('open', o);
+      document.documentElement.classList.toggle('menu-open', o);
+      btn.setAttribute('aria-expanded', o ? 'true' : 'false');
+      btn.setAttribute('aria-label', o ? 'Close menu' : 'Open menu');
+      panel.setAttribute('aria-hidden', o ? 'false' : 'true');
+      if (o) closeBtn.focus(); else if (panel.contains(document.activeElement)) btn.focus();
+    }
+    btn.addEventListener('click', function () { setOpen(!panel.classList.contains('open')); });
+    closeBtn.addEventListener('click', function () { setOpen(false); });
+    $$('a', panel).forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var t = document.querySelector(a.getAttribute('href'));
+        e.preventDefault();
+        setOpen(false);
+        if (t) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      });
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && panel.classList.contains('open')) setOpen(false); });
+    window.addEventListener('resize', function () { if (window.innerWidth > 900 && panel.classList.contains('open')) setOpen(false); });
+  })();
 
   /* ---------- scroll effects ---------- */
   var top = $('#top'), prog = $('#progress'), heroPhoto = $('#heroPhoto'), track = $('#track');

@@ -9,14 +9,14 @@ window.SITE = {
   url: "https://example.com",
 
   name: "Lumiere Beauty Studio",
-  tagline: "Bridal, hair and skin care in Panampilly Nagar, Kochi.",
+  tagline: "Bridal, hair and skin care in Kochi.",
   since: 2014,
 
   phone: "+91 98XXX XXXXX",      // shown on the page
   phoneLink: "+919800000000",    // used for the Call button
   whatsapp: "919800000000",      // country code + number, no plus sign or spaces
-  address: "2nd floor, Example Arcade, Panampilly Nagar, Kochi 682036",
-  street: "2nd floor, Example Arcade, Panampilly Nagar",
+  address: "2nd floor, Example Arcade, Kochi 682036",
+  street: "2nd floor, Example Arcade",
   city: "Kochi",
   postcode: "682036",
   directionsUrl: "https://maps.google.com/",
@@ -29,7 +29,7 @@ window.SITE = {
   hero: {
     line1: "Bridal looks, hair",
     line2: "and skin care",
-    line3: "in Panampilly Nagar.",   // shown in italics
+    line3: "in Kochi.",   // shown in italics
     lead: "Walk in or book on WhatsApp. Every price is written on this page, so there are no surprises at the counter.",
     cta: "Book on WhatsApp",
     secondary: "See prices"
