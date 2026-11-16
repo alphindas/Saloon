@@ -8,7 +8,7 @@ window.SITE = {
   theme: "pale-gold",            // "pale-gold" or "ice-plum" (more themes: see css/styles.css)
   url: "https://example.com",
 
-  name: "Mulla Beauty Studio",
+  name: "Lumiere Beauty Studio",
   tagline: "Bridal, hair and skin care in Panampilly Nagar, Kochi.",
   since: 2014,
 
@@ -48,14 +48,14 @@ window.SITE = {
 
   servicesIntro: "Prices are in rupees. “Onwards” means the final price depends on hair length.",
   services: {
-    skin: { label: "Skin", items: [
-      { name: "Jasmine glow facial", price: "₹ 2,800", note: "Deep cleanse, steam, massage and a brightening mask. 60 minutes." },
+    skin: { label: "Skin", image: "assets/images/facial.jpg", blurb: "Facials and treatments for calm, bright skin", items: [
+      { name: "Lumiere glow facial", price: "₹ 2,800", note: "Deep cleanse, steam, massage and a brightening mask. 60 minutes." },
       { name: "Hydrating facial", price: "₹ 1,800", note: "For dry or tired skin. 45 minutes." },
       { name: "Clean-up", price: "₹ 900", note: "Cleanse, scrub and light massage. 30 minutes." },
       { name: "De-tan treatment", price: "₹ 1,200", note: "Face and neck, or hands and feet." },
       { name: "Threading, eyebrows", price: "₹ 60" }
     ]},
-    hair: { label: "Hair", items: [
+    hair: { label: "Hair", image: "assets/images/hair.jpg", blurb: "Cuts, colour and care for healthy hair", items: [
       { name: "Haircut, women", price: "₹ 450", note: "Wash, cut and blow dry." },
       { name: "Haircut, men", price: "₹ 250", note: "Cut and style." },
       { name: "Hair spa", price: "₹ 1,200", note: "Deep conditioning with scalp massage. 45 minutes." },
@@ -63,13 +63,13 @@ window.SITE = {
       { name: "Keratin smoothing", price: "₹ 4,500", unit: "onwards", note: "Lasts about four months." },
       { name: "Blow dry and set", price: "₹ 600", note: "For parties and functions." }
     ]},
-    bridal: { label: "Bridal", items: [
+    bridal: { label: "Bridal", image: "assets/images/bridal.jpg", blurb: "Looks for the big day, trial included", items: [
       { name: "Bridal trial look", price: "₹ 1,500", note: "Included free in every bridal package." },
       { name: "Reception look", price: "₹ 9,500", note: "Makeup, hairstyle and saree draping." },
       { name: "Wedding day", price: "₹ 16,000", note: "Muhurtham makeup, hairstyle, draping and a touch-up kit." },
       { name: "Pre-wedding care", price: "₹ 6,500", note: "Facial, hair spa, manicure and pedicure in one visit." }
     ]},
-    nails: { label: "Nails", items: [
+    nails: { label: "Nails", image: "assets/images/nails.jpg", blurb: "Clean, neat nails that last", items: [
       { name: "Manicure", price: "₹ 500" },
       { name: "Pedicure", price: "₹ 700" },
       { name: "Gel polish", price: "₹ 800", note: "Lasts two to three weeks." },
@@ -78,19 +78,20 @@ window.SITE = {
   },
 
   signature: {
-    title: "The jasmine glow facial,",
+    image: "assets/images/glow.jpg",
+    title: "The Lumiere glow facial,",
     titleItalic: "our most booked treatment.",
     text: "One hour that leaves skin calm, clean and bright. Good before a function, or any week you want a reset.",
     steps: [
       { name: "Deep cleanse and steam", time: "10 min" },
       { name: "Face and neck massage", time: "20 min" },
-      { name: "Brightening jasmine mask", time: "20 min" },
+      { name: "Brightening glow mask", time: "20 min" },
       { name: "Finish and sun protection", time: "10 min" }
     ],
     price: "₹ 2,800",
     duration: "for 60 minutes",
     cta: "Book this facial",
-    waText: "Hi, I'd like to book the Jasmine glow facial."
+    waText: "Hi, I'd like to book the Lumiere glow facial."
   },
 
   bridal: {
@@ -113,15 +114,15 @@ window.SITE = {
   gallery: {
     title: "Recent work",
     text: "Photos from our own clients, shared with their permission.",
-    // For a real client add:  image: "assets/gallery-1.jpg"  to each item. Without it the demo uses crops of the hero photo.
+    // Six photos. Use your client's own pictures (about 1200 px wide looks sharpest).
     items: [
-      { caption: "Bridal and skin" },
-      { caption: "Hair and styling" },
-      { caption: "Saree draping" },
-      { caption: "Skin care" }
+      { caption: "Glow and care",    image: "assets/images/glow.jpg",     position: "50% 30%" },
+      { caption: "Facials",          image: "assets/images/facial.jpg",   position: "55% 40%" },
+      { caption: "Bridal looks",     image: "assets/images/bridal.jpg",   position: "60% 25%" },
+      { caption: "Nail care",        image: "assets/images/nails.jpg",    position: "40% 50%" },
+      { caption: "Hair and styling", image: "assets/images/hair.jpg",     position: "70% 30%" },
+      { caption: "Our products",     image: "assets/images/products.jpg", position: "50% 55%" }
     ],
-    cta: "Follow us for new looks every week",
-    ctaUrl: "#",
     button: "See more on Instagram"
   },
 

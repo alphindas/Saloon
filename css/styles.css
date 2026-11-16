@@ -136,31 +136,59 @@ section{position:relative}
 .rule{display:block;width:72px;height:2px;background:var(--gold-grad);margin-bottom:22px}
 
 /* services */
-.services{padding:60px 0 150px}
-.svc{display:grid;grid-template-columns:.9fr 1.1fr;gap:96px;align-items:start}
-.svc .left{position:sticky;top:120px}
-.cats{margin-top:30px;border-top:1px solid var(--line)}
-.cats button{display:flex;align-items:baseline;justify-content:space-between;width:100%;text-align:left;padding:22px 0;border-bottom:1px solid var(--line);font-family:"Bodoni Moda",serif;font-weight:500;font-size:40px;letter-spacing:-.015em;color:rgba(43,34,25,.4);transition:color .45s var(--ease),padding .45s var(--ease)}
+.services{padding:60px 0 150px;overflow:hidden;position:relative}
+.services:before{content:"";position:absolute;right:-14%;top:-6%;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle,rgba(232,216,169,.62),rgba(232,216,169,0) 66%);pointer-events:none;transform:translateY(var(--gy,0px))}
+.services .wrap{position:relative}
+.svc{display:grid;grid-template-columns:.85fr 1.15fr;gap:88px;align-items:start}
+.svc .left{position:sticky;top:112px}
+.cats{margin-top:30px;border-top:1px solid var(--line);isolation:isolate}
+.cats button{position:relative;display:flex;align-items:baseline;justify-content:space-between;width:100%;text-align:left;padding:22px 0;border-bottom:1px solid var(--line);font-family:"Bodoni Moda",serif;font-weight:500;font-size:40px;letter-spacing:-.015em;color:rgba(43,34,25,.36);transition:color .45s var(--ease),padding .55s var(--ease)}
 .cats button small{font-family:"Jost";font-size:15px;color:var(--muted);letter-spacing:0}
+.cats button:before{content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:3px;background:var(--gold-grad);transform:scaleY(0);transform-origin:50% 100%;transition:transform .6s var(--ease)}
+.cats button:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(232,216,169,.55),transparent 78%);opacity:0;transition:opacity .5s;z-index:-1}
 .cats button:hover{color:var(--ink)}
-.cats button.on{color:var(--ink);padding-left:18px;background:linear-gradient(90deg,rgba(232,216,169,.45),transparent 70%)}
-.panels{position:relative;min-height:560px}
-.panel{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .6s var(--ease),transform .7s var(--ease),visibility 0s .6s}
-.panel.on{position:relative;opacity:1;visibility:visible;transform:none;transition:opacity .6s var(--ease) .1s,transform .7s var(--ease) .1s}
-.panel .note{font-size:16px;color:var(--muted);margin-bottom:10px}
+.cats button.on{color:var(--ink);padding-left:24px}
+.cats button.on:before{transform:scaleY(1)}
+.cats button.on:after{opacity:1}
+.panels{position:relative;min-height:820px}
+.panel{position:absolute;left:0;right:0;top:0;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s var(--ease),visibility 0s .4s}
+.panel.on{position:relative;opacity:1;visibility:visible;pointer-events:auto;transition:opacity .5s var(--ease) .05s}
+.pimg{position:relative;height:250px;border-radius:20px;overflow:hidden;margin-bottom:12px;box-shadow:0 34px 60px -38px rgba(120,80,30,.65);opacity:0}
+.pimg .ph{position:absolute;inset:0;background-size:cover;background-position:center 32%}
+.pimg:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 32%,rgba(255,255,255,.5) 50%,transparent 68%);transform:translateX(-130%);pointer-events:none}
+.pimg .chip{position:absolute;left:18px;bottom:16px;z-index:2;display:flex;align-items:baseline;gap:12px;padding:10px 18px;border-radius:999px;background:var(--glass);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:15px;color:var(--muted)}
+.pimg .chip b{font-family:"Bodoni Moda",serif;font-weight:500;font-size:21px;color:var(--ink)}
+.panel.on .pimg{opacity:1;animation:pimgIn 1.1s var(--ease) backwards}
+.panel.on .pimg .ph{animation:phZoom 2s var(--ease) backwards}
+.panel.on .pimg:after{animation:sheen 1.5s var(--ease) .55s both}
+@keyframes pimgIn{from{opacity:0;clip-path:inset(0 0 100% 0 round 20px)}to{opacity:1;clip-path:inset(0 0 0 0 round 20px)}}
+@keyframes phZoom{from{transform:scale(1.2)}to{transform:scale(1)}}
+@keyframes sheen{from{transform:translateX(-130%)}to{transform:translateX(130%)}}
 .menu{list-style:none}
-.menu li{display:grid;grid-template-columns:auto 1fr auto;column-gap:14px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(201,169,97,.3)}
-.menu .n{font-weight:500;font-size:21px}
-.menu .dots{border-bottom:2px dotted rgba(138,110,39,.4);transform:translateY(-5px);min-width:30px}
-.menu .p{font-family:"Bodoni Moda",serif;font-weight:500;font-size:26px;color:var(--gold-deep);white-space:nowrap}
+.menu li{border-bottom:1px solid rgba(201,169,97,.3)}
+.menu li:first-child{border-top:1px solid rgba(201,169,97,.3)}
+.panel.on .menu li{animation:rowIn .85s var(--ease) backwards;animation-delay:calc(var(--i) * 85ms + .4s)}
+@keyframes rowIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.menu a.row{position:relative;display:grid;grid-template-columns:auto 1fr auto;column-gap:14px;align-items:baseline;padding:19px 14px;margin:0 -14px}
+.menu a.row:before{content:"";position:absolute;inset:0;border-radius:12px;background:linear-gradient(90deg,rgba(232,216,169,.6),rgba(232,216,169,0));opacity:0;transform:scaleX(.55);transform-origin:0 50%;transition:opacity .45s,transform .65s var(--ease)}
+.menu a.row:hover:before,.menu a.row:focus-visible:before{opacity:1;transform:scaleX(1)}
+.menu a.row>*{position:relative}
+.menu .n{font-weight:500;font-size:21px;transition:transform .5s var(--ease)}
+.menu a.row:hover .n,.menu a.row:focus-visible .n{transform:translateX(8px)}
+.menu .dots{position:relative;border-bottom:2px dotted rgba(138,110,39,.4);transform:translateY(-5px);min-width:30px;transition:border-color .3s}
+.menu .dots:after{content:"Book on WhatsApp";position:absolute;right:6px;top:-1.5em;font-size:13px;font-weight:500;color:var(--gold-deep);white-space:nowrap;opacity:0;transform:translateX(12px);transition:opacity .35s,transform .5s var(--ease)}
+.menu a.row:hover .dots,.menu a.row:focus-visible .dots{border-color:transparent}
+.menu a.row:hover .dots:after,.menu a.row:focus-visible .dots:after{opacity:1;transform:none}
+.menu .p{font-family:"Bodoni Moda",serif;font-weight:500;font-size:26px;color:var(--gold-deep);white-space:nowrap;transition:transform .5s var(--ease)}
+.menu a.row:hover .p{transform:scale(1.07);transform-origin:100% 50%}
 .menu .p i{font-family:"Jost";font-style:normal;font-size:14px;color:var(--muted);margin-left:4px}
 .menu .d{grid-column:1/-1;font-size:15px;color:var(--muted);margin-top:2px}
 
 /* signature */
 .sig{padding:40px 0 160px}
 .sig .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:110px;align-items:center}
-.arch{position:relative;height:680px;border-radius:340px 340px 18px 18px;overflow:hidden;box-shadow:0 50px 80px -50px rgba(120,80,30,.55)}
-.arch .img{position:absolute;inset:-8% 0;background:var(--photo) 36% 26%/auto 118% no-repeat;will-change:transform}
+.arch{position:relative;height:600px;border-radius:340px 340px 18px 18px;overflow:hidden;box-shadow:0 50px 80px -50px rgba(120,80,30,.55)}
+.arch .img{position:absolute;inset:-5% 0;background:var(--photo) 36% 26%/auto 118% no-repeat;will-change:transform}
 .arch:after{content:"";position:absolute;inset:14px;border-radius:326px 326px 8px 8px;border:1px solid rgba(255,255,255,.7);pointer-events:none}
 .sig h2{font-size:clamp(40px,4.6vw,66px);line-height:1.02;letter-spacing:-.02em}
 .sig h2 em{font-style:italic;color:var(--gold-deep)}
@@ -199,19 +227,16 @@ section{position:relative}
 .gallery{padding:20px 0 150px}
 .gal{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:96px;gap:18px}
 .tile{position:relative;border-radius:18px;overflow:hidden;background:var(--champagne)}
-.tile .img{position:absolute;inset:0;background:var(--photo) center/cover no-repeat;transition:transform 1.6s var(--ease)}
-.tile:hover .img{transform:scale(1.06)}
-.tile figcaption{position:absolute;left:18px;bottom:16px;font-weight:500;font-size:15px;color:#fff;text-shadow:0 1px 14px rgba(60,30,0,.5)}
-.g1{grid-column:1/6;grid-row:1/7}
-.g1 .img{background-size:auto 150%;background-position:38% 22%}
-.g2{grid-column:6/10;grid-row:1/4}
-.g2 .img{background-size:auto 230%;background-position:92% 10%}
-.g3{grid-column:10/13;grid-row:1/5}
-.g3 .img{background-size:auto 300%;background-position:100% 0%}
-.g4{grid-column:6/10;grid-row:4/7}
-.g4 .img{background-size:auto 260%;background-position:38% 78%}
-.g5{grid-column:10/13;grid-row:5/7;background:var(--gold-grad);display:flex;align-items:center;padding:0 22px}
-.g5 a{font-family:"Bodoni Moda",serif;font-style:italic;font-size:26px;line-height:1.15;color:var(--deep-ink)}
+.tile .img{position:absolute;inset:0;background-size:cover;background-repeat:no-repeat;background-position:center;transition:transform 1.6s var(--ease)}
+.tile:hover .img{transform:scale(1.07)}
+.tile:after{content:"";position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(0deg,rgba(70,40,10,.4),transparent);pointer-events:none}
+.tile figcaption{position:absolute;z-index:2;left:20px;bottom:16px;font-weight:500;font-size:16px;color:#fff;text-shadow:0 1px 14px rgba(60,30,0,.45)}
+.g1{grid-column:1/5;grid-row:1/5}
+.g2{grid-column:5/9;grid-row:1/4}
+.g3{grid-column:9/13;grid-row:1/6}
+.g4{grid-column:1/5;grid-row:5/9}
+.g5{grid-column:5/9;grid-row:4/9}
+.g6{grid-column:9/13;grid-row:6/9}
 .demo-note{font-size:14px;color:var(--muted);margin-top:22px}
 
 /* reviews */
@@ -272,14 +297,20 @@ footer{background:linear-gradient(180deg,var(--foot-a),var(--foot-b));border-top
   .svc .left{position:static;margin-bottom:34px}
   .cats button{font-size:32px}
   .panels{min-height:0}
-  .arch{height:480px;border-radius:240px 240px 14px 14px;margin-bottom:44px}
+  .pimg{height:190px}
+  .menu .n{font-size:19px}
+  .menu .p{font-size:22px}
+  .cats button.on{padding-left:18px}
+  .arch{height:440px;border-radius:240px 240px 14px 14px;margin-bottom:44px}
   .pk{display:block}
   .pk>div{margin:0 0 34px;padding:0 0 34px;border-bottom:1px solid var(--gold)}
   .pk>div:after{display:none}
   .check{padding:22px}
   .check h3{margin-right:0;width:100%}
   .stats .wrap{grid-template-columns:1fr;gap:26px}
-  .gal{grid-auto-rows:60px;gap:12px}
+  .gal{grid-template-columns:1fr 1fr;grid-auto-rows:170px;gap:12px;grid-auto-flow:dense}
+  .gal .tile{grid-column:auto!important;grid-row:auto!important}
+  .gal .g1,.gal .g3{grid-row:span 2!important}
   .rev .top2{display:block}
   .quotes{display:block}
   .quotes blockquote{margin-bottom:34px;font-size:22px}
