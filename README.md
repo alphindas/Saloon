@@ -15,10 +15,10 @@ The demo photo in `assets/hero.jpg` is only a stand-in. Replace it with a photo 
 ## Run it on your computer
 
 ```
-python3 -m http.server 8000
+npm run dev
 ```
 
-Then open http://localhost:8000
+Then open http://localhost:3000. There is nothing to install, because the dev server uses only what comes with Node. (You can also just double-click `index.html`.)
 
 ## Put it online (Cloudflare Pages)
 

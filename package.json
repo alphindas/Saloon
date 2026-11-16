@@ -1,0 +1,11 @@
+{
+  "name": "boutique-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One-page demo website for beauty parlours and boutiques. Edit site-config.js to re-brand.",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "start": "node dev-server.js"
+  },
+  "engines": { "node": ">=16" }
+}
